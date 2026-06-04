@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel="preconnect" href="https://npm.elemecdn.com" crossorigin>
@@ -17,24 +17,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>归档 - imagokai</title>
+  <title>AI 时代漫游：注意力机制 - imagokai</title>
 
   
-    <meta name="description" content="This is my personal blog, sharing my life and thoughts.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2019/12/">
+    <meta name="description" content="Google 在 2017 年发布了《Attention Is All You Need》，提出了大名鼎鼎的 Transformer，成为现代大语言模型的基石。而 Transformer 架构中最核心的概念叫注意力机制。  注意力到底是什么 在人类语言中，一个词语，在不同的语境中会有截然不同的含义。以“苹果”为例：  句子 A：“这个苹果真好吃，味道很甜” 句子 B：“苹果今天晚上发布财报，是一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI 时代漫游：注意力机制">
+<meta property="og:url" content="http://example.com/2026/06/04/transformer-attention-mechanism/">
 <meta property="og:site_name" content="imagokai">
-<meta property="og:description" content="This is my personal blog, sharing my life and thoughts.">
+<meta property="og:description" content="Google 在 2017 年发布了《Attention Is All You Need》，提出了大名鼎鼎的 Transformer，成为现代大语言模型的基石。而 Transformer 架构中最核心的概念叫注意力机制。  注意力到底是什么 在人类语言中，一个词语，在不同的语境中会有截然不同的含义。以“苹果”为例：  句子 A：“这个苹果真好吃，味道很甜” 句子 B：“苹果今天晚上发布财报，是一个">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/assets/icon.webp">
+<meta property="article:published_time" content="2026-06-04T07:39:09.000Z">
+<meta property="article:modified_time" content="2026-06-04T07:39:09.000Z">
 <meta property="article:author" content="imagokai">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="大模型">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/assets/icon.webp">
   
   
   
-  
+  <meta name="keywords" content="AI,大模型">
 
   <!-- feed -->
   
@@ -48,10 +52,10 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://example.com","author":{"@type":"Person","name":"imagokai","sameAs":[],"image":"http://example.com/assets/icon.webp"},"name":"imagokai","description":"This is my personal blog, sharing my life and thoughts.","url":"http://example.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"imagokai","sameAs":[],"image":"http://example.com/assets/icon.webp"},"dateCreated":"2026-06-04T15:39:09+08:00","dateModified":"2026-06-04T15:39:09+08:00","datePublished":"2026-06-04T15:39:09+08:00","description":"","headline":"AI 时代漫游：注意力机制","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/06/04/transformer-attention-mechanism/"},"publisher":{"@type":"Organization","name":"imagokai","sameAs":[],"image":"http://example.com/assets/icon.webp","logo":{"@type":"ImageObject","url":"http://example.com/assets/icon.webp"}},"url":"http://example.com/2026/06/04/transformer-attention-mechanism/","keywords":"AI, 大模型","image":[]}</script>
   <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
 </head>
-<body><div id="l_cover"></div><div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<body><div id="l_cover"></div><div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/icon.webp" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">imagokai</div><div class="sub normal cap">生活 & 思考的碎片</div><div class="sub hover cap" style="opacity:0"> Live for the long game</div></a></div></header>
@@ -63,26 +67,166 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
-<widget class="widget-wrapper markdown"><div class="widget-header dis-select"><span class="name">亲爱的旅人啊，欢迎你的来访</span></div><div class="widget-body fs14"><p>对这里的内容感兴趣？欢迎来评论区交流。</p>
 
-<div class="linklist center" style="grid-template-columns:repeat(1,1fr);">
-<a class="link" title="给我留言吧" href="/about/#comments"><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M7.25 9A.75.75 0 0 1 8 8.25h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 7.25 9m0 3.5a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1-.75-.75"/></svg><span>给我留言吧</span></div></a></div></div></widget>
 
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2026/06/04/transformer-attention-mechanism/"><span class="title">AI 时代漫游：注意力机制</span></a><a class="item title" href="/2026/06/02/llm-embedding-unembedding/"><span class="title">AI 时代漫游：大模型的输入与输出</span></a><a class="item title" href="/2026/05/30/matrix-and-llm/"><span class="title">AI 时代漫游：数学直觉</span></a><a class="item title" href="/2021/04/09/docker-introduction/"><span class="title">Docker 技术概述</span></a><a class="item title" href="/2019/12/31/github-pages-custom-domain/"><span class="title">为 Github Pages 绑定域名</span></a><a class="item title" href="/2018/11/17/the-pomodoro-technique/"><span class="title">了解番茄工作法</span></a><a class="item title" href="/2017/04/23/using-shell-with-the-time/"><span class="title">现代化 Shell 使用指南</span></a><a class="item title" href="/2016/10/15/personal-macbook-configuration/"><span class="title">个人的 MacBook 配置</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/icon.webp" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">imagokai</div><div class="sub normal cap">生活 & 思考的碎片</div><div class="sub hover cap" style="opacity:0"> Live for the long game</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a href="/categories/">分类</a><a href="/tags/">标签</a><a class="active" href="/archives/">归档</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2026</div><div class="archive-list"><a class='post fs14' href="/2026/06/04/transformer-attention-mechanism/"><time>06-04</time><span>AI 时代漫游：注意力机制</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/06/02/llm-embedding-unembedding/"><time>06-02</time><span>AI 时代漫游：大模型的输入与输出</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/05/30/matrix-and-llm/"><time>05-30</time><span>AI 时代漫游：数学直觉</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2021</div><div class="archive-list"><a class='post fs14' href="/2021/04/09/docker-introduction/"><time>04-09</time><span>Docker 技术概述</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2019</div><div class="archive-list"><a class='post fs14' href="/2019/12/31/github-pages-custom-domain/"><time>12-31</time><span>为 Github Pages 绑定域名</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2018</div><div class="archive-list"><a class='post fs14' href="/2018/11/17/the-pomodoro-technique/"><time>11-17</time><span>了解番茄工作法</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2017</div><div class="archive-list"><a class='post fs14' href="/2017/04/23/using-shell-with-the-time/"><time>04-23</time><span>现代化 Shell 使用指南</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2016</div><div class="archive-list"><a class='post fs14' href="/2016/10/15/personal-macbook-configuration/"><time>10-15</time><span>个人的 MacBook 配置</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2026-06-04T07:39:09.000Z">2026-06-04</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-06-04T07:39:09.000Z">2026-06-04</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>AI 时代漫游：注意力机制</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>Google 在 2017 年发布了《Attention Is All You Need》，提出了大名鼎鼎的 <strong>Transformer</strong>，成为现代大语言模型的基石。而 Transformer 架构中最核心的概念叫注意力机制。</p>
+<h2 id="注意力到底是什么"><a class="markdownIt-Anchor" href="#注意力到底是什么"></a> 注意力到底是什么</h2>
+<p>在人类语言中，一个词语，在不同的语境中会有截然不同的含义。以“苹果”为例：</p>
+<ul>
+<li>句子 A：“这个苹果真好吃，味道很甜”</li>
+<li>句子 B：“苹果今天晚上发布财报，是一个短线投资机会”</li>
+</ul>
+<p>这两句话中，“苹果”代表完全不同的含义。在句子 A 中，它是一种水果；在句子 B 中，它是一家科技公司。</p>
+<p>在大模型中，当一个 Token 刚被嵌入到高维空间中时，它表示的是模型对这个词的统计语义认知，其中混合了该词在海量语料中出现过的各种语义模式。对于“苹果”这种多义词而言，其初始表示尚未完全确定当前语境下的具体含义。</p>
+<p>那么，模型在当前的句子中该怎么理解它？这里就需要<strong>注意力机制</strong>了。注意力机制会根据相关性权重，对上下文中的 Value 向量进行加权汇总，并将汇总后的结果融合回当前 Token 的表示中。在“财报”语义下，“苹果”的科技、商业信息被放大，而水果、甜等属性被抑制。注意力机制通过融合上下文信息，完成了多义词在特定语境下的<strong>语义聚焦</strong>。</p>
+<h2 id="注意力的数学实现"><a class="markdownIt-Anchor" href="#注意力的数学实现"></a> 注意力的数学实现</h2>
+<p>我们从直觉上理解了“注意力就是看向周围的词”。那么计算机如何实现这个过程呢？</p>
+<p>模型在处理一个词（Token）时，需要计算它与句子中其他词的关系，以赋予不同词不同的“注意力权重”。输入数据会通过线性变换，为每个词生成三个向量：</p>
+<ul>
+<li>Q (Query)：词向量的<strong>主动检索表征</strong>。它编码了当前词想从上下文中提取哪些语法关系或语义特征。可以理解为当前 Token 对上下文的一种检索模式，它定义了该 Token 希望关注哪些特征，例如动词“吃”对应的 Query，训练后可能更容易匹配表示主语和宾语的 Key。</li>
+<li>K (Key)：词向量的<strong>被检索特征编码</strong>。它定义了当前词暴露给其他词的“响应维度”，决定了它对外提供的语法或语义标签，例如“苹果”的 Key 可能编码了它所具备的语法和语义特征，使得其他 Token 能够判断它是否与当前查询相关。</li>
+<li>V (Value)：词向量的<strong>实质性语义表征</strong>。它不参与关联度计算，而是在被其他 Token 关注时，向其提供实际需要传递的语义信息。</li>
+</ul>
+<p>注意力计算的公式如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Attention</mtext><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><mi>K</mi><mo separator="true">,</mo><mi>V</mi><mo stretchy="false">)</mo><mo>=</mo><mtext>softmax</mtext><mrow><mo fence="true">(</mo><mfrac><mrow><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></mrow><msqrt><msub><mi>d</mi><mi>k</mi></msub></msqrt></mfrac><mo fence="true">)</mo></mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Attention</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.468361em;vertical-align:-0.95003em;"></span><span class="mord text"><span class="mord">softmax</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5183309999999999em;"><span style="top:-2.25278em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.85722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.81722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.18278000000000005em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<p>拆开来看这个公式：</p>
+<p><strong>第一步：算关联度（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">Q K^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.035771em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span>）</strong></p>
+<p>拿“苹果”的查询向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span>，去和句子里的所有词的键向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 进行点积运算，得到注意力分数。在几何空间中，方向越接近的向量通常会得到更高的点积得分，因此更容易被模型认为具有相关性。</p>
+<p><strong>第二步：算权重比例（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>softmax</mtext></mrow><annotation encoding="application/x-tex">\text{softmax}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text"><span class="mord">softmax</span></span></span></span></span>）</strong></p>
+<p>除以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><msub><mi>d</mi><mi>k</mi></msub></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{d_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.18278000000000005em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.85722em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.81722em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.18278000000000005em;"><span></span></span></span></span></span></span></span></span>（避免维度增大后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>softmax</mtext></mrow><annotation encoding="application/x-tex">\text{softmax}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text"><span class="mord">softmax</span></span></span></span></span> 过早进入饱和区，从而影响梯度传播），通过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>softmax</mtext></mrow><annotation encoding="application/x-tex">\text{softmax}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text"><span class="mord">softmax</span></span></span></span></span> 函数，转化为一组总和为 100% 的权重概率分布。</p>
+<p><strong>第三步：提取信息（乘以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>）</strong></p>
+<p>根据得到的注意力权重，对所有 Value 向量进行加权求和。即根据上下文的关联度，计算出当前词需要吸收的“语义修正量”（可以将 Attention 的输出近似理解为一个上下文相关的信息增量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Δ</mi><mi>X</mi><mo>=</mo><mi>A</mi><mi>t</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">(</mo><mi>Q</mi><mo separator="true">,</mo><mi>K</mi><mo separator="true">,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\Delta X = Attention(Q,K,V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal">t</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span>）。</p>
+<p><strong>最终融合：残差相加（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">X + \Delta X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Δ</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>）</strong><br />
+将注意力机制计算出来的语义修正量，通过残差连接加到原始词向量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 上，就得到了包含上下文信息的动态词向量。</p>
+<h2 id="多头注意力机制"><a class="markdownIt-Anchor" href="#多头注意力机制"></a> 多头注意力机制</h2>
+<p>GPT-3 实际实现时，使用了多头注意力机制。例如 GPT-3 的隐藏维度为 12,288。如果使用 96 个 Attention Head，那么每个 Head 的维度只有：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12288</mn><mi mathvariant="normal">/</mi><mn>96</mn><mo>=</mo><mn>128</mn></mrow><annotation encoding="application/x-tex">12288 / 96 = 128</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">2</span><span class="mord">8</span><span class="mord">8</span><span class="mord">/</span><span class="mord">9</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">8</span></span></span></span>，即每个 Head 只在 128 维空间中学习一类关系模式，最后再将 96 个 Head 的结果拼接回来。</p>
+<p>为什么不直接使用一个超大的 Attention？</p>
+<p>假设只有一个 Head，上下文长度为 n，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mi>K</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">QKV</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 的维度都是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mn>12288</mn></mrow><annotation encoding="application/x-tex">n \times 12288</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mord">2</span><span class="mord">8</span><span class="mord">8</span></span></span></span> 维。理论上完全可以只使用一个 Head。Attention 直接在完整空间中计算相关性。</p>
+<p>但语言中的相关性并不是单一概念。一个词可能同时涉及：</p>
+<ul>
+<li>语法关系</li>
+<li>语义关系</li>
+<li>指代关系</li>
+<li>位置关系</li>
+</ul>
+<p>例如句子中的某个词，可能需要同时判断：</p>
+<ul>
+<li>它是谁的主语或宾语；</li>
+<li>它指代的是哪个实体；</li>
+<li>它与哪些词语具有语义关联；</li>
+<li>它与当前位置之间存在什么关系。</li>
+</ul>
+<p>如果将所有关系都压缩到同一个 Attention 空间中，不同类型的关联关系容易相互干扰。因此 Transformer 将 Attention 拆分成多个 Head，让不同 Head 在不同子空间中学习不同类型的关系。</p>
+<p>从直觉上看，一个 Token 的完整隐藏状态包含了丰富的信息，例如语义、语法、上下文和世界知识等，因此需要较大的隐藏维度来存储这些信息；但对于某一个具体的关系而言，例如主谓关系、指代关系或位置关系，通常只需要其中的一部分特征即可描述，并不需要完整的 12,288 维信息。因此：</p>
+<ul>
+<li>隐藏维度（Model Dimension）负责<strong>存储信息</strong>；</li>
+<li>Head 维度（Head Dimension）负责<strong>提取关系</strong>。</li>
+</ul>
+<p>Transformer 的设计并不是让每个 Attention Head 都理解整个世界，而是让不同 Head 从不同角度观察同一个世界。隐藏维度负责存储丰富的信息，多头机制负责从这些信息中提取不同类型的关联关系。正是这些关联关系不断修正和丰富 Token 的表示，最终让“苹果”从一个具有多种可能含义的词，逐渐演化为当前语境下准确而具体的语义表达。</p>
+<p>从这个角度来看，Attention 并不是简单地“看向其他词”，而是在不断利用上下文重构 Token 的语义表示。Transformer 的强大之处，正是这种<strong>持续的语义聚焦与信息融合能力</strong>。</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="http://example.com/2026/06/04/transformer-attention-mechanism/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=http://example.com/2026/06/04/transformer-attention-mechanism/&title=AI 时代漫游：注意力机制 - imagokai&summary=Google 在 2017 年发布了《Attention Is All You Need》，提出了大名鼎鼎的 Transformer，成为现代大语言模型的基石。而 Transformer 架构中最核心的概念叫注意力机制。
+ 注意力到底..."><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=AI 时代漫游：注意力机制 - imagokai&amp;body=http://example.com/2026/06/04/transformer-attention-mechanism/"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img  src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=http://example.com/2026/06/04/transformer-attention-mechanism/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2026/06/02/llm-embedding-unembedding/">AI 时代漫游：大模型的输入与输出</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>快来参与讨论吧~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" src="https://giscus.app/client.js" data-repo="imagokai/blog-comment" data-repo-id="R_kgDOO0znQg" data-category="Announcements" data-category-id="DIC_kwDOO0znQs4CuVpD" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">imagokai</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br />
 本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
-<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right"></aside><div class='float-panel'>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right"><div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> 注意力到底是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E6%95%B0%E5%AD%A6%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 注意力的数学实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="toc-text"> 多头注意力机制</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M8 10.5h8M8 14h5.5M17 3.338A9.95 9.95 0 0 0 12 2C6.477 2 2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.63 1.63 0 0 1 1.149.133A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10c0-1.821-.487-3.53-1.338-5"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -95,7 +239,7 @@
 
 <script type="text/javascript">
   window.canonical = {"closeEnable":true,"closeText":"关闭提示","originalHost":null,"officialHosts":["localhost"],"encoded":""};
-  window.canonical["param"] = {"permalink":null,"checklink":"/js/plugins/video.js"};
+  window.canonical["param"] = {"permalink":"http://example.com/2026/06/04/transformer-attention-mechanism/","checklink":"/js/plugins/video.js"};
   // Fix: Ensure page is at the correct top position on data load
   if (history.scrollRestoration) {
     history.scrollRestoration = 'auto';
@@ -732,6 +876,45 @@
 
 <!-- optional -->
 
+  <script>
+  (function() {
+    const lazyload = true;
+    
+    function initGiscus() {
+      const el = document.querySelector('#comments #giscus');
+      if (!el) return;
+      
+      function load_giscus() {
+        try {
+          el.innerHTML = '';
+        } catch (error) {
+          console.error(error);
+        }
+        const script = document.createElement('script');
+        script.async = true;
+        for (const key of Object.keys(el.attributes)) {
+          const attr = el.attributes[key];
+          if (['class', 'id'].includes(attr.name) === false) {
+            script.setAttribute(attr.name, attr.value);
+          }
+        }
+        el.appendChild(script);
+      }
+      
+      util.viewportLazyload(el, load_giscus, lazyload);
+    }
+    
+    // Store in global stellar namespace for PJAX reinitialization
+    window.stellar = window.stellar || {};
+    window.stellar.initComments = window.stellar.initComments || {};
+    window.stellar.initComments.giscus = initGiscus;
+    
+    // Initialize on page load
+    initGiscus();
+  })();
+</script>
+
+
 
 
 <script defer>
@@ -992,6 +1175,7 @@
     }
   }, 'swiper');
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.23/dist/katex.min.css" integrity="sha384-//SZkxyB7axjCAopkAL1E1rve+ZSPKapD89Lo/lLhcsXR+zOYl5z6zJZEFXil+q0" crossorigin="anonymous">
 <script>
   utils.initPlugin(() => {
     const codeElements = document.querySelectorAll('.code');

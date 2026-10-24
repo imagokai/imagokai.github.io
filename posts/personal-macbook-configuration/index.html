@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.2">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta="">个人的 MacBook 配置 - imagokai</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
+      }
+    })();
+  </script>
+
+  <meta name="description" content="从系统设置到常用软件，一份面向开发和日常使用的 Mac 配置。" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="个人的 MacBook 配置" data-stellar-page-meta="">
+<meta property="og:url" content="https://imagokai.github.io/posts/personal-macbook-configuration/" data-stellar-page-meta="">
+<meta property="og:site_name" content="imagokai" data-stellar-page-meta="">
+<meta property="og:description" content="从系统设置到常用软件，一份面向开发和日常使用的 Mac 配置。" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="og:image" content="https://imagokai.github.io/assets/avatar.webp" data-stellar-page-meta="">
+<meta property="article:author" content="imagokai" data-stellar-page-meta="">
+<meta property="article:published_time" content="2016-10-15T08:18:42.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2016-10-15T08:18:42.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="macOS" data-stellar-page-meta="">
+<meta property="article:tag" content="效率" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta="">
+<meta name="twitter:image" content="https://imagokai.github.io/assets/avatar.webp" data-stellar-page-meta=""><meta name="twitter:title" content="个人的 MacBook 配置" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="macOS,效率" data-stellar-page-meta="">
+
+  <!-- feed -->
+  
+    
+
+    
+      
+        <link rel="alternate" href="/atom.xml" title="imagokai" type="application/atom+xml">
+      
+    
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+    <link rel="shortcut icon" href="/assets/favicon.webp">
+  
+
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"imagokai","sameAs":[],"image":"https://imagokai.github.io/assets/avatar.webp"},"dateCreated":"2016-10-15T16:18:42+08:00","dateModified":"2016-10-15T16:18:42+08:00","datePublished":"2016-10-15T16:18:42+08:00","description":" 写在前面\n\n“工欲善其事，必先利其器”\n—— 《论语·卫灵公》\n\n我认为 macOS 是一款非常优秀的桌面操作系统，它作为一个 Unix-like 操作系统，对程序开发人员十分友好，然后又有一个精美的桌面系统，和丰富的日常软件生态。能够很好地满足程序开发和日常使用的需要。\n那么拿到新的电脑后，如何配置系统？需要安装哪些软件？我分享一下个人的 MacBook 配置，主要站在日常使用和开发编程...","headline":"个人的 MacBook 配置","mainEntityOfPage":{"@type":"WebPage","@id":"https://imagokai.github.io/posts/personal-macbook-configuration/"},"publisher":{"@type":"Organization","name":"imagokai","sameAs":[],"image":"https://imagokai.github.io/assets/avatar.webp","logo":{"@type":"ImageObject","url":"https://imagokai.github.io/assets/avatar.webp"}},"url":"https://imagokai.github.io/posts/personal-macbook-configuration/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"macOS, 效率","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreen.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaigbscreen.css"></noscript>
+<style>
+  @media screen and (min-width: 769px) {
+    .site-region--topbar .menu .ui-icon {
+      display: none;
+    }
+  }
+</style>
+
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region="" id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="topbar rightbar">
+<header data-stellar-runtime-region="" id="topbar-region" class="site-region site-region--topbar ui-surface" data-region="topbar"><div class="site-region__viewport"><div class="widget-instance widget-instance--brand" data-widget-id="topbar:fixed:brand" data-presentation="topbar">
+<header class="brand-header brand-header--topbar brand-header--site"><div class="brand-wrap"><a class="brand-image brand-image--avatar" href="/"><img no-lazy="" src="/assets/avatar.webp" alt="" onerror="this.onerror=null;this.src=&quot;/images/stellar-error.491ee870f4940739.svg&quot;"></a><a class="brand-title" href="/"><div class="brand-name">imagokai's blog</div></a></div></header>
+</div>
+  <div class="widgets widget-stack widget-stack--topbar widget-stack--topbar"><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:0:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div><div class="widget-instance widget-instance--menu" data-widget-id="topbar:1:menu" data-presentation="topbar" data-leftbar-rail="">
+
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active" href="/" title="博客" aria-current="page">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"></path><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">博客</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/archives/" title="归档">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M6.94028 2C7.35614 2 7.69326 2.32421 7.69326 2.72414V4.18487C8.36117 4.17241 9.10983 4.17241 9.95219 4.17241H13.9681C14.8104 4.17241 15.5591 4.17241 16.227 4.18487V2.72414C16.227 2.32421 16.5641 2 16.98 2C17.3958 2 17.733 2.32421 17.733 2.72414V4.24894C19.178 4.36022 20.1267 4.63333 20.8236 5.30359C21.5206 5.97385 21.8046 6.88616 21.9203 8.27586L22 9H2.92456H2V8.27586C2.11571 6.88616 2.3997 5.97385 3.09665 5.30359C3.79361 4.63333 4.74226 4.36022 6.1873 4.24894V2.72414C6.1873 2.32421 6.52442 2 6.94028 2Z"></path><path d="M21.9995 14.0001V12.0001C21.9995 11.161 21.9963 9.66527 21.9834 9H2.00917C1.99626 9.66527 1.99953 11.161 1.99953 12.0001V14.0001C1.99953 17.7713 1.99953 19.6569 3.1711 20.8285C4.34267 22.0001 6.22829 22.0001 9.99953 22.0001H13.9995C17.7708 22.0001 19.6564 22.0001 20.828 20.8285C21.9995 19.6569 21.9995 17.7713 21.9995 14.0001Z" opacity=".5"></path><path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"></path><path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"></path><path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"></path><path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"></path><path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"></path><path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">归档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/about/" title="关于">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M14 4h-4C6.229 4 4.343 4 3.172 5.172S2 8.229 2 12s0 5.657 1.172 6.828S6.229 20 10 20h4c3.771 0 5.657 0 6.828-1.172S22 15.771 22 12s0-5.657-1.172-6.828S17.771 4 14 4" opacity=".5"></path><path fill="currentColor" d="M13.25 9a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75m1 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m1 3a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75M9 11a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 6c4 0 4-.895 4-2s-1.79-2-4-2s-4 .895-4 2s0 2 4 2"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">关于</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:2:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div></div></div></header>
+<div class="site-workspace"><main data-stellar-runtime-region="" class="site-main" id="main">
+
+
+<div class="article-banner-wrap"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%B7%A5%E7%A8%8B/">工程</a>
+</div><div class="right"><span class="cap reading">2569 字 · 预计阅读 9 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2016-10-15T08:18:42.000Z">2016-10-15</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2016-10-15T08:18:42.000Z">2016-10-15</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>个人的 MacBook 配置</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content"><h2 id="写在前面"><a class="markdownIt-Anchor" href="#写在前面" data-stellar-navigation=""></a> 写在前面</h2>
+<blockquote>
+<p>“工欲善其事，必先利其器”<br>
+—— 《论语·卫灵公》</p>
+</blockquote>
+<p>我认为 macOS 是一款非常优秀的桌面操作系统，它作为一个 Unix-like 操作系统，对程序开发人员十分友好，然后又有一个精美的桌面系统，和丰富的日常软件生态。能够很好地满足程序开发和日常使用的需要。</p>
+<p>那么拿到新的电脑后，如何配置系统？需要安装哪些软件？我分享一下个人的 MacBook 配置，主要站在日常使用和开发编程的角度来进行配置。</p>
+<h2 id="系统设置"><a class="markdownIt-Anchor" href="#系统设置" data-stellar-navigation=""></a> 系统设置</h2>
+<p>建议拿到电脑后，先升级到最新的系统版本。新电脑升级不容易出现奇怪的问题。通过左上角的苹果图标，选择「About This Mac - Software Update…」来升级系统。</p>
+<p>个人常用的一些系统配置。系统配置可以通过左上角的苹果图标下的「System Preferences…」进入。</p>
+<p>建议开启的一些触摸板设置：</p>
+<ul>
+<li>Trackpad - Tap to click：轻拍触摸板来点击，不用每次都按下去</li>
+<li>Trackpad - App Exposé：三指下滑在同应用的不同窗口间切换</li>
+</ul>
+<p>修改计算机名称为一个可读和简洁的名称：</p>
+<ul>
+<li>Sharing - Computer Name</li>
+</ul>
+<p>禁用 Guest 用户登录：</p>
+<ul>
+<li>Users &amp; Groups - Guest User - Allow guests to log in to this computer：根据需要是否禁用游客账户</li>
+</ul>
+<p>设置触发角方便关闭屏幕：</p>
+<ul>
+<li>Desktop &amp; Screen Saver - Hot Corners - Put Display to Sleep：设置当鼠标滑到屏幕的角落时触发屏幕休眠，我通常使用右下角</li>
+</ul>
+<p>Dock:</p>
+<ul>
+<li>Dock - Position on screen - Left：将 Dock 移动到左边，增加可视空间</li>
+<li>Dock - Size：适当缩小 Dock，增加可视空间</li>
+<li>Dock - Minimize windows into application icon：最小化窗口到其应用上</li>
+</ul>
+<h2 id="基础环境"><a class="markdownIt-Anchor" href="#基础环境" data-stellar-navigation=""></a> 基础环境</h2>
+<h3 id="v2rayu"><a class="markdownIt-Anchor" href="#v2rayu" data-stellar-navigation=""></a> V2rayU</h3>
+<p>由于网络问题，部分网站的访问需要科学上网。免费的代理软件，Mac 上推荐使用 <a target="_blank" rel="noopener" href="https://github.com/yanue/V2rayU/tree/master" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>V2rayU</a>，iPhone 上可以用 Potatso Lite（需要使用美区账号下载）。</p>
+<p>目前连 Homebrew 下载链接都不能访问了，代理还是很有必要的。</p>
+<h3 id="homebrew"><a class="markdownIt-Anchor" href="#homebrew" data-stellar-navigation=""></a> Homebrew</h3>
+<p><a target="_blank" rel="noopener" href="https://brew.sh/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Homebrew</a> 是 Mac 下最好的包管理软件，相当于 Linux 下的 yum 和 apt-get。使用以下命令安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c <span class="string">"<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>对于软件安装的一些建议：</p>
+<ol>
+<li>对于命令行软件，如果 Homebrew 上有，优先使用 Homebrew 安装。因为使用 brew 安装软件十分方便快捷，后续升级管理也比较方便。</li>
+<li>对于图形化软件，可以考虑使用 brew、App Store 或者官网下载安装。</li>
+</ol>
+<p>Homebrew 安装软件的一般步骤：</p>
+<ol>
+<li>brew search 模糊查询是否存在对应的软件</li>
+<li>brew info 用完整的名称查看软件的详细信息</li>
+<li>brew install 安装软件</li>
+<li>认真阅读 install 命令的输出结果，了解软件需要的配置和启动方法</li>
+<li>brew upgrade 升级软件到最新版本</li>
+</ol>
+<h3 id="输入法"><a class="markdownIt-Anchor" href="#输入法" data-stellar-navigation=""></a> 输入法</h3>
+<p>考虑到补全和词库，国内的输入法还是比系统自带的要好用一些。可以选择搜狗输入法、QQ输入法或百度输入法。我比较习惯使用搜狗输入法。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install sogouinput</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器" data-stellar-navigation=""></a> 浏览器</h3>
+<p>平时习惯了使用 Chrome 浏览器，并且在开发者工具方面，Chrome 也做的相对更好一些。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew search chrome</span><br><span class="line">brew info google-chrome</span><br><span class="line">brew install google-chrome</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="文本编辑器"><a class="markdownIt-Anchor" href="#文本编辑器" data-stellar-navigation=""></a> 文本编辑器</h3>
+<p>VSCode 是微软出品的优秀的编辑器和轻量的 IDE。用来做日常的笔记编写和简单的代码实现都十分舒服。</p>
+<p>之前还使用过 Sublime Text 和 Atom（Github 出品），在微软收购了 GitHub 后，已经全面拥抱 VSCode 了。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight zsh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install visual-studio-code</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="视频播放器"><a class="markdownIt-Anchor" href="#视频播放器" data-stellar-navigation=""></a> 视频播放器</h3>
+<p>Mac 上最佳的视频播放器 <a target="_blank" rel="noopener" href="https://iina.io/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>IINA</a>，基于 mpv，解码强大，设计风格和功能紧跟最新的 macOS 版本。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iina</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="开发环境"><a class="markdownIt-Anchor" href="#开发环境" data-stellar-navigation=""></a> 开发环境</h2>
+<h3 id="iterm2"><a class="markdownIt-Anchor" href="#iterm2" data-stellar-navigation=""></a> iTerm2</h3>
+<p>开发需要一个好用的终端，Mac 自带的终端功能比较简单，建议使用 ITerm2，支持分屏、补全、查看会有更好的开发体验。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install iterm2</span><br></pre></td></tr></tbody></table></figure>
+<p>终端通常使用频率很高，分享一个可以随时隐藏/唤出终端的配置：</p>
+<ol>
+<li>Keys - HotKey - Show/hide all windows with a system-wide hotkey：设置一个全局的快捷键最小化和还原终端窗口</li>
+<li>Profiles - Window - Space - All Spaces：当终端窗口还原的时候，可以在任何一个桌面，而不是打开终端的桌面</li>
+</ol>
+<h3 id="zsh"><a class="markdownIt-Anchor" href="#zsh" data-stellar-navigation=""></a> zsh</h3>
+<p>zsh 是一个兼容 bash，并且支持强大的补全和丰富插件的 Shell。</p>
+<p>从 macOS Catalina 版开始，zsh 也开始成为了 Mac 的默认 Shell，无需再进行额外的配置，旧版本配置可以参考 <a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/HT208050" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Mac 的帮助文档</a>。</p>
+<h3 id="oh-my-zsh"><a class="markdownIt-Anchor" href="#oh-my-zsh" data-stellar-navigation=""></a> Oh My Zsh</h3>
+<p>zsh 很强大，但是配置很多很复杂，于是就有了 <a target="_blank" rel="noopener" href="https://ohmyz.sh/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Oh My Zsh</a>。Oh My Zsh 提供了很多默认的配置、方法、插件和主题，让你的 zsh 可以开箱即用。</p>
+<p>安装 Oh My Zsh：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="subst">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>我开启的一些插件，在 <strong>~/.zshrc</strong> 中添加：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(extract git web-search z zsh_reload)</span><br></pre></td></tr></tbody></table></figure>
+<p>我使用的主题为 <strong>ys</strong>，该主题不使用任何特殊符号，该有的信息都有。优点是登陆到任何一台有 zsh 的服务器上，简单的改一下主题，就能获得一致的展示体验。</p>
+<h3 id="dotbot"><a class="markdownIt-Anchor" href="#dotbot" data-stellar-navigation=""></a> Dotbot</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/anishathalye/dotbot" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Dotbot</a> 是一个管理 dotfiles 的工具，相比于其他的 dotfiles 管理方案，它更加简单和直接一些。它直接使用一个 git 仓库来管理你的所有配置文件，并提供一系列简单的命令支持快速在 home 目录下创建软链接的方式来管理。</p>
+<blockquote>
+<p>如果你还不知道 dotfiles 是什么？</p>
+<p>Mac 下的各种常用命令和软件的相关配置，通常会存在用户目录下的以 “.” 开头的文件里，dotfiles 就是这些配置文件的概念。当你更换电脑时，只要你备份了你的 dotfiles，就可以快速地回到之前的设置中。关于 dotfiles 的概念和如何管理，可以参考 github 的这份 <a target="_blank" rel="noopener" href="https://dotfiles.github.io/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>指引</a>。</p>
+</blockquote>
+<h3 id="tldr"><a class="markdownIt-Anchor" href="#tldr" data-stellar-navigation=""></a> tldr</h3>
+<p>tldr 是一个简明的命令帮助，列出了一个命令最常见的用法，并提供了简明的例子来参考。使用命令最常用用法时，比 man 命令方便多了。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tldr</span><br></pre></td></tr></tbody></table></figure>
+<p>使用方式，比如查看 find 命令的用法：</p>
+<ol>
+<li>tldr find</li>
+</ol>
+<h3 id="z"><a class="markdownIt-Anchor" href="#z" data-stellar-navigation=""></a> z</h3>
+<p>z 是一个快速跳转命令，它会学习你常使用的目录，使用一段时间后，就不需要再用 cd 来回跳转了，直接使用 z 加目录的部分名称就可以跳转，十分方便。</p>
+<p>如何使用 z：</p>
+<ul>
+<li>如果使用 zsh 的话，直接在插件中启用 z 即可。在 <strong>~/.zshrc</strong> 中增加配置 <code>plugins=(z)</code>。</li>
+<li>或者使用 Homebrew 安装 z，命令 <code>brew install z</code></li>
+</ul>
+<h3 id="git"><a class="markdownIt-Anchor" href="#git" data-stellar-navigation=""></a> Git</h3>
+<p>程序员必备的版本管理工具了，现在已经成为最主流的版本管理软件。</p>
+<p>使用 Homebrew 安装：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></tbody></table></figure>
+<p>一些简单的基础配置：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置提交时的姓名和邮箱</span></span><br><span class="line">git config --global user.name <span class="string">"Your Name"</span></span><br><span class="line">git config --global user.email <span class="string">"your_email@gmail.com"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 一些有用的别名</span></span><br><span class="line">git config --global alias.lol <span class="string">"log --oneline --graph --decorate"</span></span><br><span class="line">git config --global alias.hist <span class="string">"log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>可以学习一下 git 的常用 workflow，推荐两个不错的教程：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/comparing-workflows" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Atlassian 的 Git workflow 教程</a>：大名鼎鼎的 Atlassian，开发了 JIRA/Confluence/Stash 的公司，建议看一下它提供的整套 git 教程，对 git 中比较容易误解的地方都有比较详细的解释。</li>
+<li><a target="_blank" rel="noopener" href="https://nvie.com/posts/a-successful-git-branching-model/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>A successful Git branching model</a>：比较符合实际项目中工程开发的工作流。</li>
+</ul>
+<h2 id="高效习惯的思考"><a class="markdownIt-Anchor" href="#高效习惯的思考" data-stellar-navigation=""></a> 高效习惯的思考</h2>
+<p>如何更高效的使用工具？</p>
+<h3 id="选择"><a class="markdownIt-Anchor" href="#选择" data-stellar-navigation=""></a> 选择</h3>
+<p>在使用工具之前，不要着急立刻开始学习它的使用细节，应该花一些时间和精力来调研了解一下有哪类类似的工具，了解一下它们的优缺点。</p>
+<p>通常学会一个工具后，你会和它打交道很长的时间，如果你选择了更好的那个，它会在长期提高你的效率。</p>
+<p>评判工具的好坏，可以通过功能的完善程度、使用的灵活性、以及社区活跃度等特性。比如对于终端复用器，screen 就比较老旧，功能不够丰富，并且不再活跃开发，应该去了解和学习 tmux。</p>
+<h3 id="最佳实践"><a class="markdownIt-Anchor" href="#最佳实践" data-stellar-navigation=""></a> 最佳实践</h3>
+<p>培养自己去了解最佳实践的习惯。</p>
+<p>最佳实践是优美的解决方案，是众人的智慧，是大家总结出来的最恰当的用法。可能当你刚开始遵循最佳实践时，不能体会到它的好处，但是它可能悄悄地让你避免了好多的坑。</p>
+<p>举一些例子：</p>
+<ul>
+<li>使用 brew 来安装和管理软件：你会很少的遇到网上问的各种乱起八糟的环境问题，哪个环境变量没有设置，或者设了一堆自相矛盾的配置项。</li>
+<li><a target="_blank" rel="noopener" href="https://semver.org/lang/zh-CN/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>语义化版本</a>来命名你的包：你可能不明白这样管理你的包有什么好处，但当你遇到传递性依赖的版本冲突的时候，你会感谢你自己。</li>
+</ul>
+<p>可以常搜索一下 ”xxx best practices“ 来了解最佳实践的用法。</p>
+<h3 id="积累"><a class="markdownIt-Anchor" href="#积累" data-stellar-navigation=""></a> 积累</h3>
+<p>很多软件的配置很复杂，慢慢积累适合自己的配置，及时备份到云端，不要换个电脑又要重新开始。比如 dotfiles 可以用 dotbot 等工具来管理同步。</p>
+<p>但也要适当折中个性化与系统默认配置，至少应该了解系统默认环境的基本操作，防止在其他服务器上效率过低。</p>
+<h3 id="反思"><a class="markdownIt-Anchor" href="#反思" data-stellar-navigation=""></a> 反思</h3>
+<p>观察和发现自己存在的低效操作，去网上了解一下有没有更高效的解决方案。发现高效的方案后，刻意的去使用它，直到它成为自己的操作习惯。比如学习一些常用的快捷键，善用 Mac 自带的搜索或一些扩展搜索的软件。</p>
+</article>
+
+
+
+
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section></div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/posts/using-shell-with-the-time/" data-stellar-navigation="">现代化 Shell 使用指南</a></div><div class="item" id="next"></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    
+    
+    <section class="body cmt-body twikoo">
+      
+
+<div id="twikoo_container" class="with-fancybox"><div class="lazy-icon"></div></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:3;"><div class="sitemap-group"><span class="fs15">Here</span><a href="/">cd /</a><a href="/about/#comments">cd /留言板/</a></div><div class="sitemap-group"><span class="fs15">Subscribe</span><a href="/atom.xml">RSS</a></div><div class="sitemap-group"><span class="fs15">Me on the web</span><a target="_blank" rel="noopener" href="https://github.com/imagokai">GitHub</a><a target="_blank" rel="noopener" href="https://t.me/s/imagokai_sparks">Telegram</a></div></div><div class="text"><p>本站由 <a href="/">imagokai</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0">Stellar 2.0.0</a> 主题创建。<br>
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+</main>
+<aside data-stellar-runtime-region="" id="rightbar-region" class="site-region site-region--rightbar" data-region="rightbar" aria-label="Rightbar"><div class="site-region__surface ui-drawer-surface"><div class="site-region__viewport"><div class="widgets widget-stack widget-stack--rightbar widget-stack--rightbar"><div class="widget-instance widget-instance--toc" data-widget-id="rightbar:1:toc" data-presentation="rightbar">
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false">
+  
+    <div class="widget-header dis-select">
+      <span class="name">本文目录</span>
+      <button type="button" class="cap-action ui-interactive card-hover card-hover--spotlight" data-shell-action="toggle-toc" aria-label="Toggle table of contents" aria-pressed="false"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg></span></button>
+    </div>
+  
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2" data-stellar-navigation=""><span class="toc-text"> 写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE" data-stellar-navigation=""><span class="toc-text"> 系统设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83" data-stellar-navigation=""><span class="toc-text"> 基础环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#v2rayu" data-stellar-navigation=""><span class="toc-text"> V2rayU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#homebrew" data-stellar-navigation=""><span class="toc-text"> Homebrew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E8%BE%93%E5%85%A5%E6%B3%95" data-stellar-navigation=""><span class="toc-text"> 输入法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%B5%8F%E8%A7%88%E5%99%A8" data-stellar-navigation=""><span class="toc-text"> 浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8" data-stellar-navigation=""><span class="toc-text"> 文本编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8" data-stellar-navigation=""><span class="toc-text"> 视频播放器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" data-stellar-navigation=""><span class="toc-text"> 开发环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#iterm2" data-stellar-navigation=""><span class="toc-text"> iTerm2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#zsh" data-stellar-navigation=""><span class="toc-text"> zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#oh-my-zsh" data-stellar-navigation=""><span class="toc-text"> Oh My Zsh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#dotbot" data-stellar-navigation=""><span class="toc-text"> Dotbot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#tldr" data-stellar-navigation=""><span class="toc-text"> tldr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#z" data-stellar-navigation=""><span class="toc-text"> z</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#git" data-stellar-navigation=""><span class="toc-text"> Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E9%AB%98%E6%95%88%E4%B9%A0%E6%83%AF%E7%9A%84%E6%80%9D%E8%80%83" data-stellar-navigation=""><span class="toc-text"> 高效习惯的思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E9%80%89%E6%8B%A9" data-stellar-navigation=""><span class="toc-text"> 选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5" data-stellar-navigation=""><span class="toc-text"> 最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%A7%AF%E7%B4%AF" data-stellar-navigation=""><span class="toc-text"> 积累</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%8F%8D%E6%80%9D" data-stellar-navigation=""><span class="toc-text"> 反思</span></a></li></ol></li></ol></div>
+  <div class="widget-footer"><a class="top ui-interactive" onclick="util.scrollTop()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M20.536 3.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464" opacity=".5"></path><path fill="currentColor" d="M9.53 12.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 9.56z"></path><path fill="currentColor" d="M9.53 16.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 13.56z"></path></svg></span><span>回到顶部</span></a><a class="buttom ui-interactive" onclick="util.scrollComment()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"></path><path fill="currentColor" d="M7.25 9A.75.75 0 0 1 8 8.25h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 7.25 9m0 3.5a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1-.75-.75"></path></svg></span><span>参与讨论</span></a></div>
+</widget>
+
+
+</div></div></div></div></aside>
+</div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region="" class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"></path><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"></path></g></svg>
+  </button>
+</div>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
+
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "https://imagokai.github.io/posts/personal-macbook-configuration/", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
+
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer=""></script>
+<script data-stellar-script="core" defer="" src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"partial-navigation","module":"/js/runtime/extensions/partial-navigation.js","scope":"document","when":{"always":true},"config":{}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"comments","module":"/js/runtime/extensions/comments.js","scope":"region","when":{"selector":"#comments"},"config":{"provider":"twikoo","options":{"envId":"https://friendly-pudding-3dc374.netlify.app/.netlify/functions/twikoo"},"pageTitle":"个人的 MacBook 配置","assets":{"localCss":"/css/comments/twikoo.css","js":"https://gcore.jsdelivr.net/npm/twikoo@1.6/dist/twikoo.all.min.js"}}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"link-prefetch","module":"/js/runtime/extensions/link-prefetch.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&amp;runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer="" src="/js/navigation-init.js?v=2.0.0"></script>
+</div>
+
+<script type="application/json" id="stellar-navigation-config">{"collection":"[\"post\",\"post\"]","url":"https://imagokai.github.io/posts/personal-macbook-configuration/","signature":"db94a180ee2bc20cec28c0a016a005512a0dc5e58eb4487613af121dcf4a29c8"}</script></body></html>

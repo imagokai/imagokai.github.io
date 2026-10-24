@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, imagokai</rights>
   <subtitle>This is my personal blog, sharing my life and thoughts.</subtitle>
   <title>imagokai</title>
-  <updated>2026-10-24T05:33:07.000Z</updated>
+  <updated>2026-10-24T09:35:55.000Z</updated>
   <entry>
     <author>
       <name>imagokai</name>
@@ -23,9 +23,9 @@
     <id>https://imagokai.github.io/posts/expose-local-services-quickly/</id>
     <link href="https://imagokai.github.io/posts/expose-local-services-quickly/"/>
     <published>2026-10-24T05:33:07.000Z</published>
-    <summary>用 Cloudflare Tunnel 快速地把本地服务暴露到公网。</summary>
-    <title>快速暴露本地服务到公网</title>
-    <updated>2026-10-24T05:33:07.000Z</updated>
+    <summary>使用 Cloudflare Tunnel 快速地把本地服务暴露到公网，无需公网 IP 和路由器转发。</summary>
+    <title>使用 Cloudflare Tunnel 暴露本地服务</title>
+    <updated>2026-10-24T09:35:55.000Z</updated>
   </entry>
   <entry>
     <author>

@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.2">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta="">Docker 技术概述 - imagokai</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
+      }
+    })();
+  </script>
+
+  <meta name="description" content="Docker 如何用镜像和容器解决环境不一致，以及它和虚拟机的差别。" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="Docker 技术概述" data-stellar-page-meta="">
+<meta property="og:url" content="https://imagokai.github.io/posts/docker-introduction/" data-stellar-page-meta="">
+<meta property="og:site_name" content="imagokai" data-stellar-page-meta="">
+<meta property="og:description" content="Docker 如何用镜像和容器解决环境不一致，以及它和虚拟机的差别。" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="og:image" content="https://imagokai.github.io/assets/avatar.webp" data-stellar-page-meta="">
+<meta property="article:author" content="imagokai" data-stellar-page-meta="">
+<meta property="article:published_time" content="2020-10-12T12:14:36.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2020-10-12T12:14:36.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="Docker" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta="">
+<meta name="twitter:image" content="https://imagokai.github.io/assets/avatar.webp" data-stellar-page-meta=""><meta name="twitter:title" content="Docker 技术概述" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="Docker" data-stellar-page-meta="">
+
+  <!-- feed -->
+  
+    
+
+    
+      
+        <link rel="alternate" href="/atom.xml" title="imagokai" type="application/atom+xml">
+      
+    
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+    <link rel="shortcut icon" href="/assets/favicon.webp">
+  
+
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"imagokai","sameAs":[],"image":"https://imagokai.github.io/assets/avatar.webp"},"dateCreated":"2020-10-12T20:14:36+08:00","dateModified":"2020-10-12T20:14:36+08:00","datePublished":"2020-10-12T20:14:36+08:00","description":"在软件开发中，有一个经典的痛点：“程序在我电脑里运行得好好的，换个环境怎么就不行了？”这种因环境差异导致的不一致性，曾是开发与运维之间主要的摩擦点。\nDocker 通过改变应用的构建、分发与运行方式，系统地解决了这一问题，并逐渐成为现代云计算与微服务架构的基础设施。\n 一、为什么我们需要 Docker\n 1. 解决分发与部署的一致性\nDocker 的核心价值在于标准化应用的交付方式。在云原生...","headline":"Docker 技术概述","mainEntityOfPage":{"@type":"WebPage","@id":"https://imagokai.github.io/posts/docker-introduction/"},"publisher":{"@type":"Organization","name":"imagokai","sameAs":[],"image":"https://imagokai.github.io/assets/avatar.webp","logo":{"@type":"ImageObject","url":"https://imagokai.github.io/assets/avatar.webp"}},"url":"https://imagokai.github.io/posts/docker-introduction/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"Docker","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  <style>
+  @media screen and (min-width: 769px) {
+    .site-region--topbar .menu .ui-icon {
+      display: none;
+    }
+  }
+</style>
+
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region="" id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="topbar rightbar">
+<header data-stellar-runtime-region="" id="topbar-region" class="site-region site-region--topbar ui-surface" data-region="topbar"><div class="site-region__viewport"><div class="widget-instance widget-instance--brand" data-widget-id="topbar:fixed:brand" data-presentation="topbar">
+<header class="brand-header brand-header--topbar brand-header--site"><div class="brand-wrap"><a class="brand-image brand-image--avatar" href="/"><img no-lazy="" src="/assets/avatar.webp" alt="" onerror="this.onerror=null;this.src=&quot;/images/stellar-error.491ee870f4940739.svg&quot;"></a><a class="brand-title" href="/"><div class="brand-name">imagokai's blog</div></a></div></header>
+</div>
+  <div class="widgets widget-stack widget-stack--topbar widget-stack--topbar"><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:0:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div><div class="widget-instance widget-instance--menu" data-widget-id="topbar:1:menu" data-presentation="topbar" data-leftbar-rail="">
+
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active" href="/" title="博客" aria-current="page">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"></path><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">博客</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/archives/" title="归档">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="currentColor"><path d="M6.94028 2C7.35614 2 7.69326 2.32421 7.69326 2.72414V4.18487C8.36117 4.17241 9.10983 4.17241 9.95219 4.17241H13.9681C14.8104 4.17241 15.5591 4.17241 16.227 4.18487V2.72414C16.227 2.32421 16.5641 2 16.98 2C17.3958 2 17.733 2.32421 17.733 2.72414V4.24894C19.178 4.36022 20.1267 4.63333 20.8236 5.30359C21.5206 5.97385 21.8046 6.88616 21.9203 8.27586L22 9H2.92456H2V8.27586C2.11571 6.88616 2.3997 5.97385 3.09665 5.30359C3.79361 4.63333 4.74226 4.36022 6.1873 4.24894V2.72414C6.1873 2.32421 6.52442 2 6.94028 2Z"></path><path d="M21.9995 14.0001V12.0001C21.9995 11.161 21.9963 9.66527 21.9834 9H2.00917C1.99626 9.66527 1.99953 11.161 1.99953 12.0001V14.0001C1.99953 17.7713 1.99953 19.6569 3.1711 20.8285C4.34267 22.0001 6.22829 22.0001 9.99953 22.0001H13.9995C17.7708 22.0001 19.6564 22.0001 20.828 20.8285C21.9995 19.6569 21.9995 17.7713 21.9995 14.0001Z" opacity=".5"></path><path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z"></path><path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z"></path><path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z"></path><path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z"></path><path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z"></path><path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z"></path></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">归档</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="/about/" title="关于">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M14 4h-4C6.229 4 4.343 4 3.172 5.172S2 8.229 2 12s0 5.657 1.172 6.828S6.229 20 10 20h4c3.771 0 5.657 0 6.828-1.172S22 15.771 22 12s0-5.657-1.172-6.828S17.771 4 14 4" opacity=".5"></path><path fill="currentColor" d="M13.25 9a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75m1 3a.75.75 0 0 1 .75-.75h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75m1 3a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1-.75-.75M9 11a2 2 0 1 0 0-4a2 2 0 0 0 0 4m0 6c4 0 4-.895 4-2s-1.79-2-4-2s-4 .895-4 2s0 2 4 2"></path></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">关于</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:2:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div></div></div></header>
+<div class="site-workspace"><main data-stellar-runtime-region="" class="site-main" id="main">
+
+
+<div class="article-banner-wrap"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%B7%A5%E7%A8%8B/">工程</a>
+</div><div class="right"><span class="cap reading">1208 字 · 预计阅读 5 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2020-10-12T12:14:36.000Z">2020-10-12</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2020-10-12T12:14:36.000Z">2020-10-12</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Docker 技术概述</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content"><p>在软件开发中，有一个经典的痛点：“程序在我电脑里运行得好好的，换个环境怎么就不行了？”这种因环境差异导致的不一致性，曾是开发与运维之间主要的摩擦点。</p>
+<p>Docker 通过改变应用的构建、分发与运行方式，系统地解决了这一问题，并逐渐成为现代云计算与微服务架构的基础设施。</p>
+<h2 id="一-为什么我们需要-docker"><a class="markdownIt-Anchor" href="#一-为什么我们需要-docker" data-stellar-navigation=""></a> 一、为什么我们需要 Docker</h2>
+<h3 id="1-解决分发与部署的一致性"><a class="markdownIt-Anchor" href="#1-解决分发与部署的一致性" data-stellar-navigation=""></a> 1. 解决分发与部署的一致性</h3>
+<p>Docker 的核心价值在于标准化应用的交付方式。在云原生时代，应用需要摆脱对具体硬件和环境配置的依赖，实现快速迁移与弹性扩展。</p>
+<ul>
+<li><strong>传统方式</strong>：需要在目标机器上分别安装软件、配置依赖、调整变量。一旦本地与生产环境在内核版本或系统库上存在细微差异，就极易引发错误。</li>
+<li><strong>Docker 方式</strong>：通过镜像将应用及其完整运行环境整体打包。镜像屏蔽了底层环境差异，部署体验接近“安装即运行”。</li>
+</ul>
+<h3 id="2-容器与虚拟机的技术对比"><a class="markdownIt-Anchor" href="#2-容器与虚拟机的技术对比" data-stellar-navigation=""></a> 2. 容器与虚拟机的技术对比</h3>
+<p>在 Docker 普及之前，虚拟机（VM）是最常见的隔离方案。但虚拟机需要为每个实例运行一套完整的客户操作系统，在资源占用和启动效率上存在劣势。</p>
+<div class="md-table-scroll"><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>容器 (Docker)</th>
+<th>虚拟机 (VM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动时间</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+<tr>
+<td>镜像体积</td>
+<td>KB ~ MB 级别</td>
+<td>GB 级别</td>
+</tr>
+<tr>
+<td>系统资源损耗</td>
+<td>极低 (约 0~5%)</td>
+<td>较高 (约 5~15%)</td>
+</tr>
+<tr>
+<td>单机支持规模</td>
+<td>可运行上千个</td>
+<td>通常为几十个</td>
+</tr>
+</tbody>
+</table></div>
+<hr>
+<h2 id="二-核心架构与基础概念"><a class="markdownIt-Anchor" href="#二-核心架构与基础概念" data-stellar-navigation=""></a> 二、核心架构与基础概念</h2>
+<p>Docker 采用典型的客户端-服务器（C/S）架构，主要包含以下组件：</p>
+<ul>
+<li><strong>Docker Daemon (dockerd)</strong>：常驻后台的守护进程，负责管理镜像、容器、网络和存储卷。</li>
+<li><strong>Docker Client</strong>：用户交互入口，负责解析命令并将请求发送给 Daemon。</li>
+<li><strong>Docker Registry</strong>：镜像仓库，负责集中存储和分发镜像，如 Docker Hub 或私有仓库。</li>
+</ul>
+<p>三个基础抽象：</p>
+<ul>
+<li><strong>Image (镜像)</strong>：容器运行的只读模板，包含代码、运行时依赖、系统库及配置。镜像构建后保持不可变。</li>
+<li><strong>Container (容器)</strong>：镜像的运行时实例。它在只读层之上叠加一个可写层，本质上是运行在受限环境中的进程。</li>
+<li><strong>Repository (仓库)</strong>：镜像仓库与逻辑集合，负责镜像的集中存储与分发。</li>
+</ul>
+<h2 id="三-底层原理如何保证一致性"><a class="markdownIt-Anchor" href="#三-底层原理如何保证一致性" data-stellar-navigation=""></a> 三、底层原理：如何保证一致性？</h2>
+<p>为了确保应用在不同环境下行为一致，Docker 重点解决了文件系统与运行隔离两个维度的问题。</p>
+<h3 id="1-文件系统一致性"><a class="markdownIt-Anchor" href="#1-文件系统一致性" data-stellar-navigation=""></a> 1. 文件系统一致性</h3>
+<p>Docker 镜像通过打包 <strong>rootfs</strong>（根文件系统），固化了应用运行所需的目录结构、配置和系统库。为了提高效率，它引入了 <strong>Union FS</strong>（联合文件系统）：</p>
+<ul>
+<li><strong>分层存储</strong>：镜像由多层只读层组成，每一层对应一次构建指令。</li>
+<li><strong>层共享</strong>：不同镜像可以复用相同的基础层，大幅减少磁盘占用。</li>
+<li><strong>写时复制 (CoW)</strong>：容器启动后，所有运行时的修改仅作用于最上层的独立可写层，不影响底层镜像。</li>
+</ul>
+<h3 id="2-环境隔离与资源控制"><a class="markdownIt-Anchor" href="#2-环境隔离与资源控制" data-stellar-navigation=""></a> 2. 环境隔离与资源控制</h3>
+<p>Docker 依赖 Linux 内核的两项核心机制来确保容器互不干扰，从而保证执行效果的一致：</p>
+<ul>
+<li><strong>Namespace (视图隔离)</strong>：为进程提供隔离视图，包括 <strong>UTS</strong>（主机名）、<strong>PID</strong>（进程编号）、<strong>Network</strong>（网络栈）、<strong>Mount</strong>（挂载点）、<strong>IPC</strong> 及 <strong>User</strong>。这使容器内的进程认为自己拥有独立的操作系统资源。</li>
+<li><strong>Cgroups (资源限制)</strong>：用于对进程可使用的 CPU、内存、磁盘 IO 等资源进行限制和统计，防止单个容器过度占用资源导致宿主机或其他容器瘫痪。</li>
+</ul>
+<h2 id="四-演进从单机到集群编排"><a class="markdownIt-Anchor" href="#四-演进从单机到集群编排" data-stellar-navigation=""></a> 四、演进：从单机到集群编排</h2>
+<p>随着应用规模的扩大，手动管理容器变得不可行，容器编排工具随之出现：</p>
+<ul>
+<li><strong>Docker Compose</strong>：面向单机环境的多容器编排工具，通过一个 YAML 文件定义完整的应用拓扑，适合本地开发测试。</li>
+<li><strong>Docker Swarm</strong>：Docker 官方提供的原生集群方案，适合中小规模场景，但在生产中的应用逐渐减少。</li>
+<li><strong>Kubernetes (K8s)</strong>：行业事实标准。通过 Pod、Service 等抽象，提供自动扩缩容、自愈和滚动更新等强大的集群调度能力。</li>
+</ul>
+<h2 id="五-结语"><a class="markdownIt-Anchor" href="#五-结语" data-stellar-navigation=""></a> 五、结语</h2>
+<p>Docker 的成功并不在于引入了全新的底层技术，而在于它对 Linux 内核能力的合理组合与抽象，将复杂的隔离机制封装为一套易于使用的应用交付标准。</p>
+</article>
+
+
+
+
+<div class="article-footer">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body"><ul><li class="post-title"><p><a target="_blank" rel="noopener" href="https://docs.docker.com/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Docker 官方文档</a></p>
+</li><li class="post-title"><p><a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Docker — 从入门到实践</a></p>
+</li></ul></div>
+    </section>
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section></div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/posts/matrix-and-llm/">AI 时代漫游：数学直觉</a></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/posts/github-pages-custom-domain/" data-stellar-navigation="">为 GitHub Pages 绑定域名</a></div></section></div>
+
+
+
+
+  <div class="related-wrap md-text" id="comments">
+    
+    
+    <section class="body cmt-body twikoo">
+      
+
+<div id="twikoo_container" class="with-fancybox"><div class="lazy-icon"></div></div>
+
+    </section>
+  </div>
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap" style="column-count:3;"><div class="sitemap-group"><span class="fs15">Here</span><a href="/">cd /</a><a href="/about/#comments">cd /留言板/</a></div><div class="sitemap-group"><span class="fs15">Subscribe</span><a href="/atom.xml">RSS</a></div><div class="sitemap-group"><span class="fs15">Me on the web</span><a target="_blank" rel="noopener" href="https://github.com/imagokai">GitHub</a></div></div><div class="text"><p>本站由 <a href="/">imagokai</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0">Stellar 2.0.0</a> 主题创建。<br>
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+</main>
+<aside data-stellar-runtime-region="" id="rightbar-region" class="site-region site-region--rightbar" data-region="rightbar" aria-label="Rightbar"><div class="site-region__surface ui-drawer-surface"><div class="site-region__viewport"><div class="widgets widget-stack widget-stack--rightbar widget-stack--rightbar"><div class="widget-instance widget-instance--toc" data-widget-id="rightbar:1:toc" data-presentation="rightbar">
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false">
+  
+    <div class="widget-header dis-select">
+      <span class="name">本文目录</span>
+      <button type="button" class="cap-action ui-interactive card-hover card-hover--spotlight" data-shell-action="toggle-toc" aria-label="Toggle table of contents" aria-pressed="false"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg></span></button>
+    </div>
+  
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E4%B8%80-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81-docker" data-stellar-navigation=""><span class="toc-text"> 一、为什么我们需要 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#1-%E8%A7%A3%E5%86%B3%E5%88%86%E5%8F%91%E4%B8%8E%E9%83%A8%E7%BD%B2%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7" data-stellar-navigation=""><span class="toc-text"> 1. 解决分发与部署的一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#2-%E5%AE%B9%E5%99%A8%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AF%B9%E6%AF%94" data-stellar-navigation=""><span class="toc-text"> 2. 容器与虚拟机的技术对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E4%BA%8C-%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5" data-stellar-navigation=""><span class="toc-text"> 二、核心架构与基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E4%B8%89-%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7" data-stellar-navigation=""><span class="toc-text"> 三、底层原理：如何保证一致性？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%80%E8%87%B4%E6%80%A7" data-stellar-navigation=""><span class="toc-text"> 1. 文件系统一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#2-%E7%8E%AF%E5%A2%83%E9%9A%94%E7%A6%BB%E4%B8%8E%E8%B5%84%E6%BA%90%E6%8E%A7%E5%88%B6" data-stellar-navigation=""><span class="toc-text"> 2. 环境隔离与资源控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%9B%9B-%E6%BC%94%E8%BF%9B%E4%BB%8E%E5%8D%95%E6%9C%BA%E5%88%B0%E9%9B%86%E7%BE%A4%E7%BC%96%E6%8E%92" data-stellar-navigation=""><span class="toc-text"> 四、演进：从单机到集群编排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E4%BA%94-%E7%BB%93%E8%AF%AD" data-stellar-navigation=""><span class="toc-text"> 五、结语</span></a></li></ol></div>
+  <div class="widget-footer"><a class="top ui-interactive" onclick="util.scrollTop()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="M20.536 3.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464" opacity=".5"></path><path fill="currentColor" d="M9.53 12.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 9.56z"></path><path fill="currentColor" d="M9.53 16.03a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0l3 3a.75.75 0 1 1-1.06 1.06L12 13.56z"></path></svg></span><span>回到顶部</span></a><a class="buttom ui-interactive" onclick="util.scrollComment()"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"></path><path fill="currentColor" d="M7.25 9A.75.75 0 0 1 8 8.25h8a.75.75 0 0 1 0 1.5H8A.75.75 0 0 1 7.25 9m0 3.5a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 0 1.5H8a.75.75 0 0 1-.75-.75"></path></svg></span><span>参与讨论</span></a></div>
+</widget>
+
+
+</div></div></div></div></aside>
+</div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region="" class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"></path></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"></path><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"></path></g></svg>
+  </button>
+</div>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
+
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "https://imagokai.github.io/posts/docker-introduction/", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
+
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer=""></script>
+<script data-stellar-script="core" defer="" src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"partial-navigation","module":"/js/runtime/extensions/partial-navigation.js","scope":"document","when":{"always":true},"config":{}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"comments","module":"/js/runtime/extensions/comments.js","scope":"region","when":{"selector":"#comments"},"config":{"provider":"twikoo","options":{"envId":"https://friendly-pudding-3dc374.netlify.app/.netlify/functions/twikoo","lang":"zh-CN"},"pageTitle":"Docker 技术概述","assets":{"localCss":"/css/comments/twikoo.css","js":"https://cdn.jsdelivr.net/npm/twikoo@2.0.15/dist/twikoo.min.js"}}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"link-prefetch","module":"/js/runtime/extensions/link-prefetch.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&amp;runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer="" src="/js/navigation-init.js?v=2.0.0"></script>
+</div>
+
+<script type="application/json" id="stellar-navigation-config">{"collection":"[\"post\",\"post\"]","url":"https://imagokai.github.io/posts/docker-introduction/","signature":"1ef6eea6b54b652d37440b9d25b048402588cf8a4337234dce20ded416faec42"}</script></body></html>

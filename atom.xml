@@ -10,7 +10,25 @@
   <rights>All rights reserved 2026, imagokai</rights>
   <subtitle>This is my personal blog, sharing my life and thoughts.</subtitle>
   <title>imagokai</title>
-  <updated>2026-10-24T09:35:55.000Z</updated>
+  <updated>2026-10-29T12:00:02.000Z</updated>
+  <entry>
+    <author>
+      <name>imagokai</name>
+    </author>
+    <category term="随想" scheme="https://imagokai.github.io/categories/%E9%9A%8F%E6%83%B3/"/>
+    <category term="Agent" scheme="https://imagokai.github.io/tags/Agent/"/>
+    <category term="效率" scheme="https://imagokai.github.io/tags/%E6%95%88%E7%8E%87/"/>
+    <category term="好奇心" scheme="https://imagokai.github.io/tags/%E5%A5%BD%E5%A5%87%E5%BF%83/"/>
+    <content>
+      <![CDATA[<p>我曾是一个喜欢探索新奇工具的人，也热衷于折腾软件的配置。但不知道从什么时候开始，我的工具箱逐渐固定了下来。我好像已经很久没有主动探索新的工具，甚至觉得自己越来越像个“老登”了。</p><p>想想也不难理解。我对工具有自己的要求，习惯于认真对比、挑选，再把它们打磨成自己喜欢的样子。像我的 <code>dotfiles</code>、<code>vimrc</code> 等配置，都已经跟了我好多年。选定后再更换，会有不小的学习和迁移成本。工作流稳定下来后，把时间花在更重要的事情上，似乎也是合理的选择。</p><p>直到最近，AI Agent 的发展又燃起了我折腾的乐趣。从 Claude、Codex、Grok Bot，到 Hermes、Ollama，我开始体验各种新产品、新概念。兴趣也重新延伸到了其他领域，比如重新折腾 RSS 订阅和内容发布工具。</p><p>这一次，我不再等到有了明确的需求，才去寻找工具，而是觉得有趣，就动手试试。折腾着折腾着，我又有了以前探索新东西时的那种快乐。</p><p>另一个变化是我对掌控感的态度。</p><p>过去，我喜欢了解软件每个配置的细节，再把它配置成自己喜欢的样子。但对掌控感的过度追求，有时也会影响我探索新事物的积极性。用了一段时间的 Agent，也折腾了不少新工具后，我发现我没那么执着于掌控每个细节了。比起弄清楚工具的每个细节，我现在更在意的是自己到底想做什么，以及能不能把它做出来。</p><p>这并不意味着理解和掌控不再重要，而是我逐渐意识到，有些事情不用完全搞明白之后才开始，也不必事事亲力亲为。这让我想起曾经很喜欢的一句 slogan：“Start small, grow fast and think big”。</p><p>希望自己能一直对这个世界保持好奇，看到有趣的东西，也愿意去试试。</p><p>对我来说，这可能是这波 AI 浪潮带来的一个意外收获。不只是接触到了很多新工具，也重新找回了探索的乐趣。</p>]]>
+    </content>
+    <id>https://imagokai.github.io/posts/rediscovering-the-joy-of-exploration/</id>
+    <link href="https://imagokai.github.io/posts/rediscovering-the-joy-of-exploration/"/>
+    <published>2026-10-29T12:00:02.000Z</published>
+    <summary>最近折腾了不少 Agent 和新工具，慢慢放下了对掌控每个细节的执念，也重新找回了尝试新事物的乐趣。</summary>
+    <title>重新找回探索的乐趣</title>
+    <updated>2026-10-29T12:00:02.000Z</updated>
+  </entry>
   <entry>
     <author>
       <name>imagokai</name>
